@@ -17,9 +17,9 @@
 • DOM을 사용해 HTML Element나 CSS Property 5개 이상 바꾸기<br>
 • 입력 format 오류, 네트워크 연결 오류 등의 예외 처리 기능 구현<br><br>
 
-<h4>서로 다른 사용자 기능 시나리오 3개 이상 구현</h4><br>
-▪ jQuery/AJAX/JSON 기능 활용
+<h4>서로 다른 사용자 기능 시나리오 3개 이상 구현</h4>
 
+▪ jQuery/AJAX/JSON 기능 활용
 ~~▪ Node.js를 활용한 local webserver를 사용하는 경우, web server의 기능은 routing 과
 API server로부터 받은 data를 forwarding하는 역할만 구현 할 것<br>
 • 예를 들어, local websever 상에서 OPEN API로 얻은 JSON 결과를 parsing하지 말 것~~<br>
@@ -27,14 +27,8 @@ API server로부터 받은 data를 forwarding하는 역할만 구현 할 것<br>
 ---
 
 <h1> COMMAND SCRIPT </h1>
-<h4> localhost:3000/main.html connect </h4>
 
-```
-cd /PATH/CONTAIN/JSONFILE
-node openapi.js
-```
-
-<h4> API </h4>
+<h4> API setting </h4>
 
 ```html:main.html
 file : main.html
@@ -58,4 +52,11 @@ var options = {
     'headers': {
     }
 };
+```
+
+<h4> localhost:3000/main.html connect </h4>
+
+```
+cd /PATH/CONTAIN/JSONFILE
+node openapi.js
 ```
