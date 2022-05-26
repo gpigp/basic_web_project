@@ -6,7 +6,7 @@ HTML
 • Semantic Element ‘header’, ‘nav’, ‘footer’ 필수 사용<br><br>
 
 CSS<br>
-▪ Attribute Selector 2개 이상, Combinator 5개 이상, ~~Pseudo-class 2개 이상, Pseudo-element 2개 이상 사용~~
+▪ Attribute Selector 2개 이상, Combinator 5개 이상, ~~Pseudo-class 2개 이상, Pseudo-element 2개 이상 사용~~<br>
 ▪ Float와 Clear 속성 사용 필수<br>
 ▪ 모바일 환경 대응 (Media Query 사용, width: 900px 기준)<br><br>
 
@@ -24,17 +24,17 @@ API server로부터 받은 data를 forwarding하는 역할만 구현 할 것<br>
 <h1> COMMAND SCRIPT </h1>
 <br>
 <h3> localhost:3000/main.html connect </h3>
-```python
+```
 cd /PATH/CONTAIN/JSONFILE
 node openapi.js
 ```
 <br>
 <h3> API </h3>
-```python
-## main.html
+```
+main.html
 src="//dapi.kakao.com/v2/maps/sdk.js?appkey=키입력&libraries=services,clusterer,drawing">
 
-## openapi.js
+openapi.js
 'url': 'https://apis.data.go.kr/3330000/HeaundaePubToiletInfoService/getPubToiletList?serviceKey=키입력&pageNo=1&numOfRows=500&resultType=json'
 
 'url': 'http://apis.data.go.kr/3330000/HeaundaeParkingInfoService/getParkingLotList?serviceKey=키입력&pageNo=1&numOfRows=500&resultType=json'
