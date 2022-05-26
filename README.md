@@ -54,7 +54,8 @@ var options = {
 };
 ```
 
-<h4> localhost:3000/main.html connect </h4>
+<h4> Address : localhost:3000/main.html </h4>
+<h4> connect </h4>
 
 ```
 cd /PATH/CONTAIN/JSONFILE
