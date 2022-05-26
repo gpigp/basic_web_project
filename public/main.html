@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> 급하다 급해운대 </title>
+        <style>
+            h1 {
+                 text-align: center; 
+            }
+            div {
+                text-align: center;
+            }
+            body {
+                height: 100vh;
+                margin: 0;
+                background: linear-gradient(180deg, rgb(246,239,223) 80%, rgb(2,76,115) 20%);
+            }
+            button {
+                width: 150px; 
+                height: 50px;
+                border: 2px solid #17C3B2;
+                position: relative;
+                overflow: hidden;
+                background-color: transparent;
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 16px;
+                transition: .3s;
+                z-index: 1;
+                font-family: inherit;
+                color: #17C3B2;
+                border-radius: 0.5em;
+                background: #fff;
+            }
+            button::before {
+                content: '';
+                width: 0;
+                height: 300%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(45deg);
+                background: #17C3B2;
+                transition: .5s ease;
+                display: block;
+                z-index: -1;
+            }
+            button:hover::before {
+                width: 105%;
+            }
+            button:hover {
+                color: #111;
+            }
+            #btn_rest {
+                color: #2196F3;
+                border: 2px solid #2196F3;
+            }
+            #btn_rest::before {
+                background: #2196F3;
+            }
+            #btn_rest:hover {
+                color: #111;
+            }
+            #btn_map {
+                color: #FBC02D;
+                border: 2px solid #FBC02D;
+            }
+            #btn_map::before {
+                background: #FBC02D;
+            }
+            #btn_map:hover {
+                color: #111;
+            }
+            #map {
+                width:500px;
+                height:400px;
+                margin: 50px auto;
+            }
+            #box {
+                margin: 40px 0 0 0px;
+            }
+            #search_loc{
+                width: 15em;
+                height: 3.5em;
+                background-color: #F3F3F3;
+                border: 3px solid #FBC02D;
+                border-radius: 0.5em;
+            }
+            #search{
+                width: 4.0em;
+                height: 3.5em;
+                background-color: #fff;
+                border: 3px solid #FBC02D;
+                border-radius: 0.5em;
+            }
+            #search:hover {
+                background-color: #FBC02D;
+                border: 3px solid black;
+            }
+            #rest_loc{
+                width: 15em;
+                height: 3.5em;
+                background-color: #F3F3F3;
+                border: 3px solid #2196F3;
+                border-radius: 0.5em;
+            }
+            #park_loc{
+                width: 15em;
+                height: 3.5em;
+                background-color: #F3F3F3;
+                border: 3px solid #17C3B2;
+                border-radius: 0.5em;
+            }
+            form {
+                height:50px;
+            }
+            input {
+                text-align: center;
+            }
+            select {
+                text-align: center;
+            }
+        </style>
+        <!-- api -->
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b159cfaef0d764fb4bd5568df28725be&libraries=services,clusterer,drawing">
+
+        </script>
+        <script>
+            function get_rest_info(){
+                var xhr = new XMLHttpRequest();
+                xhr.withCredentials = true;
+                xhr.addEventListener("readystatechange", function() {
+                    if(this.readyState === 4) {
+                        var obj = JSON.parse(this.responseText);
+                        rest_info = obj.getPubToiletList.item;
+                    }
+                });
+                xhr.open("GET", "http://localhost:3000/restapi");
+                xhr.send();
+            }
+            function get_park_info(){
+                var xhr = new XMLHttpRequest();
+                xhr.withCredentials = true;
+                xhr.addEventListener("readystatechange", function() {
+                    if(this.readyState === 4) {
+                        var obj = JSON.parse(this.responseText);
+                        park_info = obj.getParkingLotList.item;
+                    }
+                });
+                xhr.open("GET", "http://localhost:3000/parkapi");
+                xhr.send();
+            }
+        </script>
+        <!-- 지도 검색 클릭시 -->
+        <script>
+            function displayMap(){
+                removeMarker();
+                removeCircle();
+                box = document.getElementById("box");
+                box.innerHTML = "<input id='search_loc' type='text' placeholder='위치를 입력해주세요'> ";
+                box.innerHTML += "<input id='search' type='button' value='검색' onclick='key_Search()'>";
+                var moveTo = new kakao.maps.LatLng(35.1631139, 129.1635509);
+                map.setLevel(8);
+                map.panTo(moveTo);
+            }
+            function key_Search(){
+                var keyword = document.getElementById('search_loc').value;
+                var ps = new kakao.maps.services.Places(); 
+                ps.keywordSearch(keyword, placesSearchCB); 
+            }
+        </script>
+        <!-- 지도 마커 표시 -->
+        <script>
+            function placesSearchCB (data, status, pagination) {
+                if (status === kakao.maps.services.Status.OK) {
+                    var bounds = new kakao.maps.LatLngBounds();
+                    removeMarker();
+                    for (var i=0; i<data.length; i++) {
+                        displayMarker(data[i]);
+                        bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+                    }      
+                    map.setBounds(bounds);
+                } 
+            }
+            function displayMarker(place) {
+                var marker = new kakao.maps.Marker({
+                    map: map,
+                    position: new kakao.maps.LatLng(place.y, place.x) 
+                });
+                var infowindow = new kakao.maps.InfoWindow({zIndex:1, removable : true});
+                kakao.maps.event.addListener(marker, 'click', function() {
+                    infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+                    infowindow.open(map, marker);
+                });
+                markers.push(marker);
+            }
+            function removeMarker() {
+                for ( var i = 0; i < markers.length; i++ ) {
+                    markers[i].setMap(null);
+                }   
+                markers = [];
+            }
+        </script>
+        <!-- 화장실 찾기 -->
+        <script>
+            function displayRest(){
+                removeMarker();
+                removeCircle();
+                rest_all_location();
+                box = document.getElementById("box");
+                box.innerHTML = "<select id='rest_loc' onchange='rest_chValue()'> <option value='' selected>선택해주세요</option><option value='0'>반송동</option><option value='1'>반여동</option><option value='2'>석대동</option><option value='3'>송정동</option><option value='4'>우동</option><option value='5'>재송동</option><option value='6'>좌동</option><option value='7'>중동</option></select>";
+            }
+            function rest_all_location(){
+                var bounds = new kakao.maps.LatLngBounds();
+                for(var i=0; i<rest_info.length; i++){
+                    var loc = {'y': rest_info[i].lat, 'x': rest_info[i].lng, 'place_name': rest_info[i].toiletName};
+                    displayMarker(loc);
+                    bounds.extend(new kakao.maps.LatLng(loc.y, loc.x));
+                }
+                avg_y = (bounds['qa'] + bounds['pa'])/2;
+                avg_x = (bounds['ha'] + bounds['oa'])/2;
+                map.setLevel(8);
+                var moveTo = new kakao.maps.LatLng(avg_y, avg_x);
+                map.panTo(moveTo);
+            }
+        </script>
+        <!-- 주차장 찾기 -->
+        <script>
+            function displayPark(){
+                removeMarker();
+                removeCircle();
+                park_all_location();
+                box = document.getElementById("box");
+                box.innerHTML = "<select id='park_loc' onchange='park_chValue()'> <option value='' selected>선택해주세요</option><option value='0'>반송동</option><option value='1'>반여동</option><option value='2'>석대동</option><option value='3'>송정동</option><option value='4'>우동</option><option value='5'>재송동</option><option value='6'>좌동</option><option value='7'>중동</option></select>";
+            }
+            function park_all_location(){
+                var bounds = new kakao.maps.LatLngBounds();
+                for(var i=0; i<100; i++){
+                    var loc = {'y': park_info[i].lat, 'x': park_info[i].lng, 'place_name': park_info[i].parkingLotName};
+                    displayMarker(loc);
+                    bounds.extend(new kakao.maps.LatLng(loc.y, loc.x));
+                }
+                // 왜 ha와 qa가 나오지 않는 현상이 발생했는지 모름.
+                bounds['ha'] = 129.11440847898004;
+                bounds['qa'] = 35.15403;
+                avg_y = (bounds['qa'] + bounds['pa'])/2;
+                avg_x = (bounds['ha'] + bounds['oa'])/2;
+                map.setLevel(8);
+                var moveTo = new kakao.maps.LatLng(avg_y, avg_x);
+                map.panTo(moveTo);
+            }
+        </script>
+        <!-- 행정구역 동 -->
+        <script>
+            const district = {0:['반송동', 35.2275345, 129.14997315, 1350],
+                            1:['반여동', 35.2044528, 129.1317441, 2000],
+                            2:['석대동', 35.2261655, 129.13149745, 1050],
+                            3:['송정동', 35.180165, 129.20670565, 2000],
+                            4:['우동', 35.1601491, 129.14540845, 1500],
+                            5:['재송동', 35.1840642, 129.13088055, 1350],
+                            6:['좌동', 35.185171, 129.172108, 2270],
+                            7:['중동', 35.162003, 129.1763826, 1400]};
+        </script>
+        <!-- select 시 변경 -->
+        <script>
+            function rest_chValue() {
+                var selected = document.getElementById("rest_loc");
+                var selected_value = selected.options[selected.selectedIndex].value;
+                if(selected_value != ""){
+                    removeCircle();
+                    var i = parseInt(selected_value);
+                    var moveLatLon = new kakao.maps.LatLng(district[i][1], district[i][2]);
+                    var circle = new kakao.maps.Circle({
+                                                    center : new kakao.maps.LatLng(district[i][1], district[i][2]),
+                                                    radius: district[i][3], 
+                                                    strokeWeight: 5,
+                                                    strokeColor: '#2196F3', 
+                                                    strokeOpacity: 1, 
+                                                    strokeStyle: 'dashed', 
+                                                    fillColor: '#2196F3', 
+                                                    fillOpacity: 0.5  
+                                                });
+                    circle.setMap(map);                            
+                    map.setLevel(7);
+                    map.panTo(moveLatLon);
+                    circles.push(circle);      
+                }
+            }
+            function park_chValue() {
+                var selected = document.getElementById("park_loc");
+                var selected_value = selected.options[selected.selectedIndex].value;
+                if(selected_value != ""){
+                    removeCircle();
+                    var i = parseInt(selected_value);
+                    var moveLatLon = new kakao.maps.LatLng(district[i][1], district[i][2]);
+                    var circle = new kakao.maps.Circle({
+                                                    center : new kakao.maps.LatLng(district[i][1], district[i][2]),
+                                                    radius: district[i][3], 
+                                                    strokeWeight: 5,
+                                                    strokeColor: '#17C3B2',
+                                                    strokeOpacity: 1, 
+                                                    strokeStyle: 'dashed',
+                                                    fillColor: '#17C3B2', 
+                                                    fillOpacity: 0.5  
+                                                });
+                    circle.setMap(map);                            
+                    map.setLevel(7);
+                    map.panTo(moveLatLon);
+                    circles.push(circle);      
+                }
+            }
+            function removeCircle() {
+                for ( var i = 0; i < circles.length; i++ ) {
+                    circles[i].setMap(null);
+                }   
+                circles = [];
+            }
+        </script>
+
+    </head>
+    <body>
+        <h1> 급하다 급해운대 </h1>
+        <div id="btn">
+            <button id="btn_rest" onclick="displayRest()"> 화장실 찾기 </button>
+            <button id="btn_park" onclick="displayPark()"> 주차장 찾기 </button>
+            <button id="btn_map" onclick="displayMap()"> 지도 검색 </button>
+        </div>
+        <form id="form" method="get" onsubmit="return false;">
+            <div id="box">
+            </div>
+        </form>
+        <div id="map"></div>
+        <script>
+            var rest_info;
+            var park_info;
+            get_rest_info();
+            get_park_info();
+            var container = document.getElementById('map');
+            var options = {
+                center: new kakao.maps.LatLng(35.1631139, 129.1635509),
+                level: 5
+            };
+            var map = new kakao.maps.Map(container, options);
+            container.style.border = "2px solid #000000";
+            var markers = [];
+            var circles = [];
+        </script>
+
+        <p id="demo"></p>
+    </body>
+</html>
