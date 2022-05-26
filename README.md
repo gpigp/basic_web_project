@@ -30,12 +30,14 @@ cd /PATH/CONTAIN/JSONFILE
 node openapi.js
 ```
 
-<br>
 <h3> API </h3>
 
+```html:main.html
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=키입력&libraries=services,clusterer,drawing">
 <br>
+```
 
+```javascript:openapi.js
 var options = {
     'method': 'GET',
     'url': 'https://apis.data.go.kr/3330000/HeaundaePubToiletInfoService/getPubToiletList?serviceKey=키입력&pageNo=1&numOfRows=500&resultType=json',
@@ -49,3 +51,4 @@ var options = {
     'headers': {
     }
 };
+```
