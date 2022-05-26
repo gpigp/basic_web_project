@@ -1,13 +1,13 @@
 <h1> COMMAND SCRIPT </h1>
 <br>
 <h3> localhost:3000/main.html connect </h3>
-~~~
+~~~python
 cd /PATH/CONTAIN/JSONFILE
 node openapi.js
 ~~~
 <br>
 <h3> API </h3>
-~~~
+~~~python
 # main.html
 src="//dapi.kakao.com/v2/maps/sdk.js?appkey=키입력&libraries=services,clusterer,drawing">
 
