@@ -1,6 +1,6 @@
 <h1> 최소 개발 기준 </h1>
 
-HTML
+HTML<br>
 ~~• Form의 서로 다른 type의 input 3개 이상 사용~~<br>
 • List 또는 Table 1개 이상 사용<br>
 • Semantic Element ‘header’, ‘nav’, ‘footer’ 필수 사용<br><br>
@@ -10,7 +10,7 @@ CSS<br>
 ▪ Float와 Clear 속성 사용 필수<br>
 ▪ 모바일 환경 대응 (Media Query 사용, width: 900px 기준)<br><br>
 
-JavaScript
+JavaScript<br>
 • DOM을 사용해 HTML Element나 CSS Property 5개 이상 바꾸기<br>
 • 입력 format 오류, 네트워크 연결 오류 등의 예외 처리 기능 구현<br><br>
 
@@ -20,6 +20,7 @@ JavaScript
 API server로부터 받은 data를 forwarding하는 역할만 구현 할 것<br>
 • 예를 들어, local websever 상에서 OPEN API로 얻은 JSON 결과를 parsing하지 말 것<br>
 
+---
 
 <h1> COMMAND SCRIPT </h1>
 <h3> localhost:3000/main.html connect </h3>
