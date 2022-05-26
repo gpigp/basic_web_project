@@ -23,10 +23,12 @@ API server로부터 받은 data를 forwarding하는 역할만 구현 할 것<br>
 ---
 
 <h1> COMMAND SCRIPT </h1>
-<h3> localhost:3000/main.html connect </h3>   
+<h3> localhost:3000/main.html connect </h3>
+
 ```
 cd /PATH/CONTAIN/JSONFILE
 node openapi.js
+```
 
 <br>
 <h3> API </h3>
