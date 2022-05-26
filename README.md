@@ -29,14 +29,22 @@ node openapi.js
 ```
 <br>
 <h3> API </h3>
-```html
-main.html
-src="//dapi.kakao.com/v2/maps/sdk.js?appkey=키입력&libraries=services,clusterer,drawing">
+```html:main.html
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=키입력&libraries=services,clusterer,drawing">
 ```
-```json
-openapi.js
-'url': 'https://apis.data.go.kr/3330000/HeaundaePubToiletInfoService/getPubToiletList?serviceKey=키입력&pageNo=1&numOfRows=500&resultType=json'
+```json:openapi.js
+var options = {
+    'method': 'GET',
+    'url': 'https://apis.data.go.kr/3330000/HeaundaePubToiletInfoService/getPubToiletList?serviceKey=키입력&pageNo=1&numOfRows=500&resultType=json',
+    'headers': {
+    }
+};
 
-'url': 'http://apis.data.go.kr/3330000/HeaundaeParkingInfoService/getParkingLotList?serviceKey=키입력&pageNo=1&numOfRows=500&resultType=json'
+var options = {
+    'method': 'GET',
+    'url': 'http://apis.data.go.kr/3330000/HeaundaeParkingInfoService/getParkingLotList?serviceKey=키입력&pageNo=1&numOfRows=500&resultType=json',
+    'headers': {
+    }
+};
 ```
 <br>
