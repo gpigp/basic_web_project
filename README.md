@@ -32,12 +32,9 @@ node openapi.js
 
 <h3> API </h3>
 
-```html:main.html
+```javascript
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=키입력&libraries=services,clusterer,drawing">
-```
-
-```javascript:openapi.js
 
 var options = {
     'method': 'GET',
