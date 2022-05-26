@@ -16,9 +16,9 @@ JavaScript<br>
 
 서로 다른 사용자 기능 시나리오 3개 이상 구현<br>
 ▪ jQuery/AJAX/JSON 기능 활용<br>
-▪ Node.js를 활용한 local webserver를 사용하는 경우, web server의 기능은 routing 과
+~~▪ Node.js를 활용한 local webserver를 사용하는 경우, web server의 기능은 routing 과
 API server로부터 받은 data를 forwarding하는 역할만 구현 할 것<br>
-• 예를 들어, local websever 상에서 OPEN API로 얻은 JSON 결과를 parsing하지 말 것<br>
+• 예를 들어, local websever 상에서 OPEN API로 얻은 JSON 결과를 parsing하지 말 것~~<br>
 
 ---
 
