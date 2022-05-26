@@ -22,18 +22,18 @@ API server로부터 받은 data를 forwarding하는 역할만 구현 할 것<br>
 
 
 <h1> COMMAND SCRIPT </h1>
-<br>
 <h3> localhost:3000/main.html connect </h3>
-```
+```linux
 cd /PATH/CONTAIN/JSONFILE
 node openapi.js
 ```
 <br>
 <h3> API </h3>
-```
+```html
 main.html
 src="//dapi.kakao.com/v2/maps/sdk.js?appkey=키입력&libraries=services,clusterer,drawing">
-
+```
+```json
 openapi.js
 'url': 'https://apis.data.go.kr/3330000/HeaundaePubToiletInfoService/getPubToiletList?serviceKey=키입력&pageNo=1&numOfRows=500&resultType=json'
 
