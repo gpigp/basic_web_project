@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+    <title> INFORMATION </title>
+    <link rel="stylesheet" type="text/css" href = "info_style.css">
+    <script>
+        function review(){
+            var score = document.getElementsByName("rating");
+            score.forEach((node) => {
+                if(node.checked) {
+                    review_score_sum += parseInt(node.value);
+                    review_num += 1;
+                    review_score = review_score_sum/review_num;
+                    rev = document.getElementById("review");
+                    rev.innerHTML = "이 앱의 별점 : " + review_score.toFixed(2);
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <nav id="menu">
+        <ul>
+            <li><a class="menulink" href="http://localhost:3000/main.html">HOME</a></li>
+            <li><a class="menulink" href="http://localhost:3000/info.html">INFO</a></li>
+            <li class="code"><a class="menulink" href="https://github.com/gpigp/basic_web_project">GITHUB CODE</a></li>
+        </ul>
+    </nav>
+    <br><br>
+
+    <div id="title">
+        <h2>급하다 급해운대는</h2>
+        <h3>해운대의 공중화장실과 주차장 위치를 제공합니다<br>
+            그리고 직접 지도에서 검색할 수 있습니다</h3>
+    </div>
+    <div id="api">
+        <h3> 사용한 API </h3>
+        <ul>
+            <li><a class="menulink" href="https://developers.kakao.com/product/map">카카오 지도</a></li>
+            <li><a class="menulink" href="https://www.data.go.kr/data/15070795/openapi.do">부산광역시 해운대구 공중화장실 정보조회 서비스</a></li>
+            <li><a class="menulink" href="https://www.data.go.kr/data/15070822/openapi.do">부산광역시 해운대구 주차장 정보 조회 서비스</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <form name="myform" id="myform" method="get" onsubmit="return false;">
+            <h3 id="review">이 앱의 별점</h3>
+            <fieldset>
+                <button id="btn_map" onclick="review()"> 별점 주기 </button>
+                <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
+                <input type="radio" name="rating" value="4" id="rate2"><label for="rate2">⭐</label>
+                <input type="radio" name="rating" value="3" id="rate3"><label for="rate3">⭐</label>
+                <input type="radio" name="rating" value="2" id="rate4"><label for="rate4">⭐</label>
+                <input type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
+            </fieldset>
+        </form>
+    </div>
+    <script> 
+        var review_score_sum = 0;
+        var review_num = 0;
+        var review_score = 0;
+    </script>
+    <footer>
+        <nav id="foot">
+            <a href='https://gpigp.github.io/taehyun/' target='_blank'>Blog</a> |
+            <a href='https://github.com/gpigp' target='_blank'>Github</a>
+        </nav>
+        <p>
+            🧑     : 김태현<br>
+            📧     : rlaxogus505@naver.com<br>
+            Copyright 2022. All Rights Reserved.
+        </p>
+    </footer>
+</body>

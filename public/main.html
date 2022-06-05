@@ -2,124 +2,8 @@
 <html>
     <head>
         <title> 급하다 급해운대 </title>
-        <style>
-            h1 {
-                 text-align: center; 
-            }
-            div {
-                text-align: center;
-            }
-            body {
-                height: 100vh;
-                margin: 0;
-                background: linear-gradient(180deg, rgb(246,239,223) 80%, rgb(2,76,115) 20%);
-            }
-            button {
-                width: 150px; 
-                height: 50px;
-                border: 2px solid #17C3B2;
-                position: relative;
-                overflow: hidden;
-                background-color: transparent;
-                text-align: center;
-                text-transform: uppercase;
-                font-size: 16px;
-                transition: .3s;
-                z-index: 1;
-                font-family: inherit;
-                color: #17C3B2;
-                border-radius: 0.5em;
-                background: #fff;
-            }
-            button::before {
-                content: '';
-                width: 0;
-                height: 300%;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) rotate(45deg);
-                background: #17C3B2;
-                transition: .5s ease;
-                display: block;
-                z-index: -1;
-            }
-            button:hover::before {
-                width: 105%;
-            }
-            button:hover {
-                color: #111;
-            }
-            #btn_rest {
-                color: #2196F3;
-                border: 2px solid #2196F3;
-            }
-            #btn_rest::before {
-                background: #2196F3;
-            }
-            #btn_rest:hover {
-                color: #111;
-            }
-            #btn_map {
-                color: #FBC02D;
-                border: 2px solid #FBC02D;
-            }
-            #btn_map::before {
-                background: #FBC02D;
-            }
-            #btn_map:hover {
-                color: #111;
-            }
-            #map {
-                width:500px;
-                height:400px;
-                margin: 50px auto;
-            }
-            #box {
-                margin: 40px 0 0 0px;
-            }
-            #search_loc{
-                width: 15em;
-                height: 3.5em;
-                background-color: #F3F3F3;
-                border: 3px solid #FBC02D;
-                border-radius: 0.5em;
-            }
-            #search{
-                width: 4.0em;
-                height: 3.5em;
-                background-color: #fff;
-                border: 3px solid #FBC02D;
-                border-radius: 0.5em;
-            }
-            #search:hover {
-                background-color: #FBC02D;
-                border: 3px solid black;
-            }
-            #rest_loc{
-                width: 15em;
-                height: 3.5em;
-                background-color: #F3F3F3;
-                border: 3px solid #2196F3;
-                border-radius: 0.5em;
-            }
-            #park_loc{
-                width: 15em;
-                height: 3.5em;
-                background-color: #F3F3F3;
-                border: 3px solid #17C3B2;
-                border-radius: 0.5em;
-            }
-            form {
-                height:50px;
-            }
-            input {
-                text-align: center;
-            }
-            select {
-                text-align: center;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href = "main_style.css">
+
         <!-- api -->
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b159cfaef0d764fb4bd5568df28725be&libraries=services,clusterer,drawing">
 
@@ -150,6 +34,7 @@
                 xhr.send();
             }
         </script>
+
         <!-- 지도 검색 클릭시 -->
         <script>
             function displayMap(){
@@ -168,6 +53,7 @@
                 ps.keywordSearch(keyword, placesSearchCB); 
             }
         </script>
+
         <!-- 지도 마커 표시 -->
         <script>
             function placesSearchCB (data, status, pagination) {
@@ -200,6 +86,7 @@
                 markers = [];
             }
         </script>
+
         <!-- 화장실 찾기 -->
         <script>
             function displayRest(){
@@ -223,6 +110,7 @@
                 map.panTo(moveTo);
             }
         </script>
+
         <!-- 주차장 찾기 -->
         <script>
             function displayPark(){
@@ -249,6 +137,7 @@
                 map.panTo(moveTo);
             }
         </script>
+
         <!-- 행정구역 동 -->
         <script>
             const district = {0:['반송동', 35.2275345, 129.14997315, 1350],
@@ -260,6 +149,7 @@
                             6:['좌동', 35.185171, 129.172108, 2270],
                             7:['중동', 35.162003, 129.1763826, 1400]};
         </script>
+        
         <!-- select 시 변경 -->
         <script>
             function rest_chValue() {
@@ -318,6 +208,15 @@
 
     </head>
     <body>
+        <header>
+            <nav id="menu">
+                <ul>
+                    <li><a class="menulink" href="http://localhost:3000/main.html">HOME</a></li>
+                    <li><a class="menulink" href="http://localhost:3000/info.html">INFO</a></li>
+                    <li class="code"><a class="menulink" href="https://github.com/gpigp/basic_web_project">GITHUB CODE</a></li>
+                </ul>
+            </nav>
+        </header>
         <h1> 급하다 급해운대 </h1>
         <div id="btn">
             <button id="btn_rest" onclick="displayRest()"> 화장실 찾기 </button>
@@ -344,7 +243,16 @@
             var markers = [];
             var circles = [];
         </script>
-
-        <p id="demo"></p>
+        <footer>
+            <nav id="foot">
+                <a href='https://gpigp.github.io/taehyun/' target='_blank'>Blog</a> |
+                <a href='https://github.com/gpigp' target='_blank'>Github</a>
+            </nav>
+            <p>
+                🧑     : 김태현<br>
+                📧     : rlaxogus505@naver.com<br>
+                Copyright 2022. All Rights Reserved.
+            </p>
+        </footer>
     </body>
 </html>
