@@ -10,12 +10,12 @@
 
 ~~▪ Attribute Selector 2개 이상, Combinator 5개 이상, Pseudo-class 2개 이상, Pseudo-element 2개 이상 사용~~<br>
 ~~▪ Float와 Clear 속성 사용 필수~~<br>
-▪ 모바일 환경 대응 (Media Query 사용, width: 900px 기준)<br><br>
+~~▪ 모바일 환경 대응 (Media Query 사용, width: 900px 기준)~~<br><br>
 
 <h4>JavaScript</h4>
 
 ~~• DOM을 사용해 HTML Element나 CSS Property 5개 이상 바꾸기~~<br>
-• 입력 format 오류, ~~네트워크 연결 오류 등의 예외 처리 기능 구현~~<br><br>
+~~• 입력 format 오류, 네트워크 연결 오류 등의 예외 처리 기능 구현~~<br><br>
 
 <h4>서로 다른 사용자 기능 시나리오 3개 이상 구현</h4>
 

@@ -48,9 +48,14 @@
                 map.panTo(moveTo);
             }
             function key_Search(){
-                var keyword = document.getElementById('search_loc').value;
-                var ps = new kakao.maps.services.Places(); 
-                ps.keywordSearch(keyword, placesSearchCB); 
+                if(document.getElementById('search_loc').value != ""){
+                    var keyword = document.getElementById('search_loc').value;
+                    var ps = new kakao.maps.services.Places(); 
+                    ps.keywordSearch(keyword, placesSearchCB); 
+                }
+                else {
+                    alert("위치를 입력해주세요")
+                }
             }
         </script>
 

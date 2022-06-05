@@ -1,13 +1,19 @@
 h1 {
-    text-align: center; 
+   text-align: center;
+   float: none;
+   clear: none;
 }
 div {
    text-align: center;
+   float: none;
+   clear: none;
 }
 body {
    height: 100vh;
    margin: 0;
    background: linear-gradient(180deg, rgb(246,239,223) 80%, rgb(2,76,115) 20%);
+   float: none;
+   clear: none;
 }
 button {
    width: 150px; 
@@ -25,6 +31,8 @@ button {
    color: #17C3B2;
    border-radius: 0.5em;
    background: #fff;
+   float: none;
+   clear: none;
 }
 button::before {
    content: '';
@@ -68,7 +76,7 @@ button:hover {
 #map {
    width:500px;
    height:400px;
-   margin: 50px auto;
+   margin: 20px auto;
 }
 #box {
    margin: 40px 0 0 0px;
@@ -107,12 +115,18 @@ button:hover {
 }
 form {
    height:50px;
+   float: none;
+   clear: none;
 }
 input {
    text-align: center;
+   float: none;
+   clear: none;
 }
 select {
    text-align: center;
+   float: none;
+   clear: none;
 }
 #menu {           
    height: 30px;
@@ -122,9 +136,9 @@ select {
    list-style: none;
    color: white;    
    background-color: rgb(246,239,223);
-   float: left;               
+   float: left;
+   clear:none;       
    line-height: 50px;         
-   vertical-align: middle;    
    text-align: center;        
 }
 #menu .menulink {                  
@@ -150,8 +164,44 @@ footer {
 	position: absolute;
    color : lightslategray;
    padding: 0 0 0 5%;
-   font-size: medium; 
+   font-size: medium;
+   float: none;
+   clear: none;
 }
 a[target="_blank"] {
    color : lightslategray;
+}
+
+@media (max-width: 900px) {
+   h1 {
+      font-size: x-large;
+      float: none;
+      clear: none;
+   }
+   button {
+      width: 75px; 
+      height: 25px;
+      float: none;
+      clear: none;
+   }
+   footer {
+      width: 50%;
+      height: 55px;
+      padding: 0 0 7.5% 5%;
+      font-size: small;
+      float: none;
+      clear: none;
+   }
+   #menu ul li {         
+      line-height: 25px;               
+   }
+   #menu .menulink {                            
+      width: 75px;               
+      font-size: 7px;            
+   }
+   #map {
+      width:250px;
+      height:200px;
+      margin: 20px auto;
+   }
 }

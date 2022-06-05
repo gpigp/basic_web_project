@@ -2,12 +2,18 @@ body {
     height: 100vh;
     margin: 0;
     background: linear-gradient(180deg, rgb(246,239,223) 80%, rgb(2,76,115) 20%);
+    float: none;
+    clear: none;
 }
 div {
     padding: 3% 0 0 10%;
+    float: none;
+    clear: none;
 }
 h2, h3 {
     margin:1%;
+    float: none;
+    clear: none;
 }
 #menu {           
     height: 30px;
@@ -91,8 +97,61 @@ footer {
 	position: absolute;
     color : lightslategray;
     padding: 0 0 0 5%;
-    font-size: medium; 
+    font-size: medium;
+    float: none;
+    clear: none;
 }
 a[target="_blank"] {
-   color : lightslategray;
+    color : lightslategray;
+}
+
+#btn_rev{
+    width: 6.0em;
+    height: 3.0em;
+    background-color: #fff;
+    border: 2px solid #FBC02D;
+    border-radius: 0.5em;
+}
+#btn_rev:hover {
+    background-color: #FBC02D;
+}
+
+@media (max-width: 900px) {
+    button {
+       width: 75px; 
+       height: 25px;
+       float: none;
+       clear: none;
+    }
+    footer {
+       width: 50%;
+       height: 55px;
+       padding: 0 0 7.5% 5%;
+       font-size: small;
+       float: none;
+       clear: none;
+    }
+    h2 {
+        font-size: medium;
+        float: none;
+        clear: none;
+    } 
+    h3 {
+        font-size: small;
+        float: none;
+        clear: none;
+    }
+    #menu ul li {         
+       line-height: 25px;               
+    }
+    #menu .menulink {                            
+       width: 75px;               
+       font-size: 7px;            
+    }
+    #myform label{
+        font-size: 1em;
+    }
+    #api .menulink {                  
+        font-size: 7px;            
+    }
 }
