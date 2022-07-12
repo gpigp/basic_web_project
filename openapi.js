@@ -11,7 +11,7 @@ app.get('/restapi', function(req, res){
     process.env.NODE_TLS_REJECT_UNAUTHORIZED="0";
     var options = {
         'method': 'GET',
-        'url': 'https://apis.data.go.kr/3330000/HeaundaePubToiletInfoService/getPubToiletList?serviceKey=zM9WQ%2F5jakfceBlNOjARQ4JxtSmCY6Lec3lpW1x4O9%2BjP%2FTUyqyrHhL%2FbBn3%2FfzIo3eZr8HW9oa9yI2hXg7VFA%3D%3D&pageNo=1&numOfRows=500&resultType=json',
+        'url': 'https://apis.data.go.kr/3330000/HeaundaePubToiletInfoService/getPubToiletList?serviceKey=키입력&pageNo=1&numOfRows=500&resultType=json',
         'headers': {
         }
     };
@@ -27,7 +27,7 @@ app.get('/parkapi', function(req, res){
     process.env.NODE_TLS_REJECT_UNAUTHORIZED="0";
     var options = {
         'method': 'GET',
-        'url': 'http://apis.data.go.kr/3330000/HeaundaeParkingInfoService/getParkingLotList?serviceKey=zM9WQ%2F5jakfceBlNOjARQ4JxtSmCY6Lec3lpW1x4O9%2BjP%2FTUyqyrHhL%2FbBn3%2FfzIo3eZr8HW9oa9yI2hXg7VFA%3D%3D&pageNo=1&numOfRows=500&resultType=json',
+        'url': 'http://apis.data.go.kr/3330000/HeaundaeParkingInfoService/getParkingLotList?serviceKey=키입력&pageNo=1&numOfRows=500&resultType=json',
         'headers': {
         }
     };
